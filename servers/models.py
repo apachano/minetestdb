@@ -7,4 +7,4 @@ class Server(models.Model):
     server_address = models.URLField(max_length=200)
     server_description = models.TextField()
     server_votes = models.IntegerField(default = 0)
-    server_mt_version = models.CharField(max_length=10)
+    #server_mt_version = models.CharField(max_length=10)
