@@ -1,0 +1,24 @@
+a {
+    color: green;
+    text-decoration:none;
+}
+body{
+    text-align:center;
+}
+.wrapper{
+    width:80%;
+    text-align:center;
+    margin-left:10%
+}
+.server{
+    width:80%;
+    height:100px;
+    border:solid 1px #000000;
+    margin-bottom:5px;
+}
+.server .server-name{
+    display:inline-block;
+}
+.server .server-name{
+    display:inline-block;
+}

@@ -1,0 +1,14 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'servers/style.css' %}" />
+
+{% if current_server_list %}
+    {% for server in current_server_list %}
+        <a href="/servers/{{ server.server_name }}/"><div class="server">
+            <div class="server-name" > {{ server.server_name }} </div>
+            <div class="server-address" > {{ server.server_address }} </div>
+        </div></a>
+    {% endfor %}
+{% else %}
+    <p>No servers are available.</p>
+{% endif %}

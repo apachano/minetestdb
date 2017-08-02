@@ -1,0 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'servers/style.css' %}" />
+
+<div class="wrapper">
+    <h1>{{ server.server_name }}</h1>
+    <h2>Owner: {{ server.server_owner }}</h2>
+    <h2>Address: {{ server.server_address }}</h2>
+    <p>{{ server.server_description }}</p>
+</div>
