@@ -20,6 +20,7 @@ from . import views
 urlpatterns = [
     url(r'^mods/', include('mods.urls')),
     url(r'^servers/', include('servers.urls')),
+    url(r'^users/', include('users.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^', views.index, name='index'),
 ]
