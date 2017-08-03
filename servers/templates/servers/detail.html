@@ -1,10 +1,12 @@
-{% load static %}
+{%  extends "minetestdb/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'servers/style.css' %}" />
+{%  block content %}
 
-<div class="wrapper">
+<div class="container">
     <h1>{{ server.server_name }}</h1>
     <h2>Owner: {{ server.server_owner }}</h2>
     <h2>Address: {{ server.server_address }}</h2>
     <p>{{ server.server_description }}</p>
 </div>
+
+{%  endblock %}
