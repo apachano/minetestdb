@@ -1,14 +1,67 @@
-{% load static %}
+{%  extends "minetestdb/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'servers/style.css' %}" />
+{%  block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                {%  if filters_mt_version %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Minetest Version</div>
+                    <div class="panel-body">
+                        <form>
+                        {% for filter in filters_mt_version %}
+                            <div class="checkbox">
+                                <label><input type="checkbox">{{ filter }}</label>
+                            </div>
+                        {% endfor %}
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+                {%  if filters_subgame %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Subgame</div>
+                    <div class="panel-body">
+                        <form>
+                        {% for filter in filters_subgame %}
+                            <div class="checkbox">
+                                <label><input type="checkbox">{{ filter }}</label>
+                            </div>
+                        {% endfor %}
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+                {%  if filters_tags %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tags</div>
+                    <div class="panel-body">
+                        <form>
+                        {% for filter in filters_tags %}
+                            <div class="checkbox">
+                                <label><input type="checkbox">{{ filter }}</label>
+                            </div>
+                        {% endfor %}
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-9">
+                {% if current_server_list %}
+                    {% for server in current_server_list %}
 
-{% if current_server_list %}
-    {% for server in current_server_list %}
-        <a href="/servers/{{ server.server_name }}/"><div class="server">
-            <div class="server-name" > {{ server.server_name }} </div>
-            <div class="server-address" > {{ server.server_address }} </div>
-        </div></a>
-    {% endfor %}
-{% else %}
-    <p>No servers are available.</p>
-{% endif %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a href="{% url 'polls:detail' server.server_name %}">{{ server.server_name }}</a>
+                            </div>
+                            <div class="panel-body">{{ server.server_address }} </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No servers are available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
