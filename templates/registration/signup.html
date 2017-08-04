@@ -1,0 +1,16 @@
+{% extends 'minetestdb/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sign up</div>
+            <div class="panel-body">
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign up</button>
+              </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
