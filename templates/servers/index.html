@@ -4,48 +4,24 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                {%  if filters_mt_version %}
-                <div class="panel panel-default">
-                    <div class="panel-heading">Minetest Version</div>
-                    <div class="panel-body">
-                        <form>
-                        {% for filter in filters_mt_version %}
-                            <div class="checkbox">
-                                <label><input type="checkbox">{{ filter }}</label>
+                <form>
+                    {% for ftype in filters %}
+                        {%  if ftype %}
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">{{ ftype }} </div>
+                                    <div class="panel-body">
+                                        {% for filter in ftype %}
+                                            <div class="checkbox">
+                                                <label><input type="checkbox">{{ filter }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
-                        {% endfor %}
-                        </form>
-                    </div>
-                </div>
-                {% endif %}
-                {%  if filters_subgame %}
-                <div class="panel panel-default">
-                    <div class="panel-heading">Subgame</div>
-                    <div class="panel-body">
-                        <form>
-                        {% for filter in filters_subgame %}
-                            <div class="checkbox">
-                                <label><input type="checkbox">{{ filter }}</label>
-                            </div>
-                        {% endfor %}
-                        </form>
-                    </div>
-                </div>
-                {% endif %}
-                {%  if filters_tags %}
-                <div class="panel panel-default">
-                    <div class="panel-heading">Tags</div>
-                    <div class="panel-body">
-                        <form>
-                        {% for filter in filters_tags %}
-                            <div class="checkbox">
-                                <label><input type="checkbox">{{ filter }}</label>
-                            </div>
-                        {% endfor %}
-                        </form>
-                    </div>
-                </div>
-                {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </form>
             </div>
             <div class="col-sm-9">
                 {% if current_server_list %}
@@ -53,9 +29,16 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <a href="{% url 'polls:detail' server.server_name %}">{{ server.server_name }}</a>
+                                <a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a>
                             </div>
-                            <div class="panel-body">{{ server.server_address }} </div>
+                            <div class="panel-body">
+                                <p>{{ server.address }}</p>
+                                <p>
+                                    {%  for tag in server.tags.all %}
+                                        [ {{ tag }} ]
+                                    {% endfor %}
+                                </p>
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}

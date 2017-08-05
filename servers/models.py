@@ -10,4 +10,4 @@ class Server(models.Model):
     description = models.TextField(null=True)
     votes = models.IntegerField(default=0, null=True)
     mt_version = models.CharField(max_length=10, null=True)
-    tags = models.ManyToManyField(Tag, verbose_name='Tags')
+    tags = models.ManyToManyField(Tag, verbose_name='Tags',  blank=True)
