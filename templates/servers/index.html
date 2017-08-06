@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-sm-3">
                 <form>
-                    {% for ftype in filters %}
+                    {% for ftypename, ftype in filters.items %}
                         {%  if ftype %}
                             <div class="form-group">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{ ftype }} </div>
+                                    <div class="panel-heading">{{ ftypename }} </div>
                                     <div class="panel-body">
                                         {% for filter in ftype %}
                                             <div class="checkbox">
