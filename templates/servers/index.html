@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <form>
+                <form action="." method="post">
+            {% csrf_token %}
                     {% for ftypename, ftype in filters.items %}
                         {%  if ftype %}
                             <div class="form-group">
@@ -13,7 +14,12 @@
                                     <div class="panel-body">
                                         {% for filter in ftype %}
                                             <div class="checkbox">
-                                                <label><input type="checkbox">{{ filter }}</label>
+                                                <label><input type="checkbox"
+                                                              name="{{ filter.id }}"
+                                                              {% if filter.id in post.items %}
+                                                                  checked="checked"
+                                                              {% endif %}
+                                                >{{ filter }}</label>
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -21,6 +27,8 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+
+                    <input type="submit" value="Apply Filters">
                 </form>
             </div>
             <div class="col-sm-9">
@@ -30,9 +38,10 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a>
+                                <span class="pull-right">{{ server.address }}</span>
                             </div>
                             <div class="panel-body">
-                                <p>{{ server.address }}</p>
+                                <p>{{ server.description|truncatechars:250 }}</p>
                                 <p>
                                     {%  for tag in server.tags.all %}
                                         [ {{ tag }} ]
@@ -44,6 +53,9 @@
                 {% else %}
                     <p>No servers are available.</p>
                 {% endif %}
+                {% for i, k in post.items %}
+                    {{ i }} and {{ k }} <br>
+                {%  endfor %}
             </div>
         </div>
     </div>

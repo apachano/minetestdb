@@ -17,3 +17,4 @@ class Server(models.Model):
     votes = models.IntegerField(default=0, null=True)
     mt_version = models.CharField(max_length=10, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tags',  blank=True)
+
