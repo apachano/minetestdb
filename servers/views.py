@@ -16,7 +16,7 @@ def index(request):
 
     tags = Tag.objects.all()
     mt_version = ["0.4.16", "0.5.0"]
-    filters = {'Tags': tags, 'Mt_Version': mt_version}
+    filters = {'Tags': tags, 'Minetest Version': mt_version}
 
     context = {'current_server_list': current_server_list,
                'filters': filters,

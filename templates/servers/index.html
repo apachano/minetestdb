@@ -28,7 +28,7 @@
                         {% endif %}
                     {% endfor %}
 
-                    <input type="submit" value="Apply Filters">
+                    <input type="submit" class="btn btn-default" value="Apply Filters">
                 </form>
             </div>
             <div class="col-sm-9">
@@ -42,20 +42,19 @@
                             </div>
                             <div class="panel-body">
                                 <p>{{ server.description|truncatechars:250 }}</p>
-                                <p>
                                     {%  for tag in server.tags.all %}
-                                        [ {{ tag }} ]
+                                        <span class="label label-default">{{ tag }}</span>
                                     {% endfor %}
-                                </p>
+
                             </div>
                         </div>
                     {% endfor %}
                 {% else %}
                     <p>No servers are available.</p>
                 {% endif %}
-                {% for i, k in post.items %}
+{% comment %}                {% for i, k in post.items %}
                     {{ i }} and {{ k }} <br>
-                {%  endfor %}
+                {%  endfor %}{% endcomment %}
             </div>
         </div>
     </div>

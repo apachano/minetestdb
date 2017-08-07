@@ -3,10 +3,43 @@
 {%  block content %}
 
 <div class="container">
-    <h1>{{ server.name }}</h1>
-    <h2>Owner: {{ server.owner }}</h2>
-    <h2>Address: {{ server.address }}</h2>
-    <p>{{ server.description }}</p>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>{{ server.name }}</h1></div>
+                <div class="panel-body"><div style="white-space: pre-wrap;">{{ server.description }}</div></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Address</div>
+                <div class="panel-body">{{ server.address }}</div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Server Owner</div>
+                <div class="panel-body"><a href="{% url 'users:detail' server.owner %}">{{ server.owner }}</a></div>
+            </div>
+            {% if server.website %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Website</div>
+                <div class="panel-body"><a href="{{ server.website }}">{{ server.website }}</a></div>
+            </div>
+            {%  endif %}
+            {% if server.tags %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Tags</div>
+                <div class="panel-body">
+                    {%  for tag in server.tags.all %}
+                        <span class="label label-default">{{ tag }}</span>
+                    {% endfor %}
+            </div>
+            {%  endif %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Server Status</div>
+                <div class="panel-body">Future Server Status widget goes here</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {%  endblock %}

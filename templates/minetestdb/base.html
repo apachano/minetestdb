@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 {% load bootstrap3 %}
 <html{% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
@@ -8,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block bootstrap3_title %}django-bootstrap3 template title{% endblock %}</title>
     {% bootstrap_css %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'minetestdb/favicon.ico' %}"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
