@@ -1,0 +1,61 @@
+{%  extends "minetestdb/base.html" %}
+
+{%  block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <form action="." method="post">
+            {% csrf_token %}
+                    {% for ftypename, ftype in filters.items %}
+                        {%  if ftype %}
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">{{ ftypename }} </div>
+                                    <div class="panel-body">
+                                        {% for filter in ftype %}
+                                            <div class="checkbox">
+                                                <label><input type="checkbox"
+                                                              name="{{ filter.id }}"
+                                                              {% if filter.id in post.items %}
+                                                                  checked="checked"
+                                                              {% endif %}
+                                                >{{ filter }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <input type="submit" class="btn btn-default" value="Apply Filters">
+                </form>
+            </div>
+            <div class="col-sm-9">
+                {% if current_mod_list %}
+                    {% for mod in current_mod_list %}
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a href="{% url 'mods:detail' mod.name %}">{{ mod.name }}</a>
+                                <span class="pull-right">{{ mod.author }}</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>{{ mod.description|truncatechars:250 }}</p>
+                                    {%  for tag in mod.tags.all %}
+                                        <span class="label label-default">{{ tag }}</span>
+                                    {% endfor %}
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No mods are available.</p>
+                {% endif %}
+{% comment %}                {% for i, k in post.items %}
+                    {{ i }} and {{ k }} <br>
+                {%  endfor %}{% endcomment %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

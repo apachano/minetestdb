@@ -1,12 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
-from minetestdb import *
+
+
+class Tag(models.Model):
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
 
 
 class Mod(models.Model):
     name = models.CharField(max_length=200)
     author = models.ForeignKey(User)
-    git = models.URLField(max_length=200)
+    git = models.URLField(max_length=200, null=True)
+    download = models.URLField(max_length=200, null=True)
     mt_version = models.CharField(max_length=10)
     description = models.TextField()
-    tags = models.ManyToManyField(Tag, verbose_name='Tags')
+    tags = models.ManyToManyField(Tag, verbose_name='Tags',  blank=True)

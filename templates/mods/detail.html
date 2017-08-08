@@ -1,0 +1,42 @@
+{%  extends "minetestdb/base.html" %}
+
+{%  block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>{{ mod.name }}</h1></div>
+                <div class="panel-body"><div style="white-space: pre-wrap;">{{ mod.description }}</div></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Download</div>
+                <div class="panel-body"><a href="{{ mod.download }}">{{ mod.download }}</a></div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Mod Author</div>
+                <div class="panel-body"><a href="{% url 'users:detail' mod.author %}">{{ mod.author }}</a></div>
+            </div>
+            {% if mod.git %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Git Repo</div>
+                <div class="panel-body"><a href="{{ mod.git }}">{{ mod.git }}</a></div>
+            </div>
+            {%  endif %}
+            {% if mod.tags %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Tags</div>
+                <div class="panel-body">
+                    {%  for tag in mod.tags.all %}
+                        <span class="label label-default">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {%  endif %}
+        </div>
+    </div>
+</div>
+
+{%  endblock %}
