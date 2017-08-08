@@ -1,8 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 
 from .models import Server
 from .models import Tag
-
+from .forms import NewServerForm
 
 def index(request):
     current_server_list = Server.objects.all()
@@ -27,3 +28,18 @@ def index(request):
 def detail(request, name):
     server = get_object_or_404(Server, name=name)
     return render(request, 'servers/detail.html', {'server': server})
+
+
+def new(request):
+    if request.method == 'POST':
+        form = NewServerForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('servers/confirm')
+    else:
+        form = NewServerForm()
+
+    return render(request, 'servers/create.html', {'form': form})
+
+
+def confirm(request):
+    return render(request, 'servers/confirm.html')

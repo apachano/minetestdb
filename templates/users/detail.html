@@ -3,7 +3,34 @@
 {%  block content %}
 
 <div class="container">
-    <h1>{{ user }}</h1>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>{{ user.username }}</h1></div>
+                <div class="panel-body">
+                    <div style="white-space: pre-wrap;"><b>Biography:</b> {{ user.profile.bio }}</div>
+                    <div>{{ user.profile.location }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>More Space?</h1></div>
+                <div class="panel-body">
+                    <div>Something should go here, latest forums post? maybe a comments section?</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Stars</div>
+                <div class="panel-body"></div>
+                    {%  for mod in user.profile.stared_mods.all %}
+                        <div><a href="{% url 'mods:detail' mod.name %}">{{ mod.name }}</a></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 </div>
 
 {%  endblock %}
