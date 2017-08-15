@@ -6,16 +6,16 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{ user.username }}</h1></div>
+                <div class="panel-heading"><h1>{{ duser.username }}</h1></div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Biography</div>
-                <div class="panel-body" style="white-space: pre-wrap;">{{ user.profile.bio }}</div>
+                <div class="panel-body" style="white-space: pre-wrap;">{{ duser.profile.bio }}</div>
             </div>
             {% if user.profile.location %}
             <div class="panel panel-default">
                 <div class="panel-heading">Location</div>
-                <div class="panel-body">{{ user.profile.location }}</div>
+                <div class="panel-body">{{ duser.profile.location }}</div>
             </div>
             {% endif %}
         </div>
@@ -43,8 +43,8 @@
                 <div class="panel-heading">Stars</div>
                 <div class="panel-body">
                     <h4>Mods</h4>
-                {% if user.profile.stared_mods.all %}
-                    {%  for mod in user.profile.stared_mods.all %}
+                {% if duser.profile.stared_mods.all %}
+                    {%  for mod in duser.profile.stared_mods.all %}
                         <div><a href="{% url 'mods:detail' mod.name %}">{{ mod.name }}</a></div>
 
                     {% endfor %}
@@ -52,8 +52,8 @@
                     You don't have any mods stared yet
                 {% endif %}
                     <h4>Servers</h4>
-                {% if user.profile.stared_servers.all %}
-                    {%  for server in user.profile.stared_servers.all %}
+                {% if duser.profile.stared_servers.all %}
+                    {%  for server in duser.profile.stared_servers.all %}
                         <div><a href="{% url 'mods:detail' server.name %}">{{ server.name }}</a></div>
                     {% endfor %}
                 {% else %}

@@ -13,7 +13,7 @@ def index(request):
 # Displays information on a user
 def detail(request, username):
     user = get_object_or_404(User, username=username)
-    return render(request, 'users/detail.html', {'user': user})
+    return render(request, 'users/detail.html', {'duser': user})
 
 
 # Allows user to edit their profile
