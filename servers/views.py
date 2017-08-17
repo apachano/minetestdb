@@ -5,6 +5,7 @@ from .models import Server
 from .models import Tag
 from .forms import NewServerForm
 
+
 def index(request):
     current_server_list = Server.objects.all()
     if request.method == 'POST':

@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from servers.models import Server
+from mods.models import Mod
 
 
 # Lists registered users
@@ -13,7 +15,11 @@ def index(request):
 # Displays information on a user
 def detail(request, username):
     user = get_object_or_404(User, username=username)
-    return render(request, 'users/detail.html', {'duser': user})
+    server_list = Server.objects.filter(owner=user)
+    mod_list = Mod.objects.filter(author=user)
+    return render(request, 'users/detail.html', {'duser': user,
+                                                 'servers': server_list,
+                                                 'mods': mod_list})
 
 
 # Allows user to edit their profile

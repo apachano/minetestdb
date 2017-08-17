@@ -24,18 +24,16 @@
                 <div class="panel-heading"><h1>Content</h1></div>
                 <div class="panel-body">
                     <div class="row">
+                        {% for server in servers %}
                         <div class="col-sm-4">
-                            <div>if the user has content it will be displayed here</div>
+                            <div><a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a></div>
                         </div>
+                        {% endfor %}
+                        {% for mod in mods %}
                         <div class="col-sm-4">
-                            <div>if the user has content it will be displayed here</div>
+                            <div><a href="{% url 'mods:detail' mod.name %}">{{ mod.name }}</a></div>
                         </div>
-                        <div class="col-sm-4">
-                            <div>if the user has content it will be displayed here</div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div>if the user has content it will be displayed here</div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -54,7 +52,7 @@
                     <h4>Servers</h4>
                 {% if duser.profile.stared_servers.all %}
                     {%  for server in duser.profile.stared_servers.all %}
-                        <div><a href="{% url 'mods:detail' server.name %}">{{ server.name }}</a></div>
+                        <div><a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a></div>
                     {% endfor %}
                 {% else %}
                     You don't have any servers stared yet
