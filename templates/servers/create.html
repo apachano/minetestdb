@@ -6,8 +6,9 @@
     server creation page
 
     <form action="." method="post">
+        {{ form.non_field_errors }}
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="Submit" />
     </form>
 </div>
