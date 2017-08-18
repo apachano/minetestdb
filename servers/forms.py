@@ -6,4 +6,5 @@ from .models import Server
 class NewServerForm(ModelForm):
     class Meta:
         model = Server
-        fields = ['name', 'owner', 'address', 'website', 'description', 'mt_version', 'tags']
+        fields = ['name', 'address', 'website', 'description', 'mt_version', 'tags']
+        exclude = ['owner']

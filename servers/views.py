@@ -10,6 +10,10 @@ def index(request):
     current_server_list = Server.objects.all()
     if request.method == 'POST':
         post = request.POST
+        # if post.sort == 'Oldest':
+        #     current_server_list = Server.objects.order_by('id')
+        # if post.sort == 'Newest':
+        #     current_server_list = Server.objects.order_by('-id')
         for tag in post:
             if tag != 'csrfmiddlewaretoken':
                 current_server_list = current_server_list.filter(tags=tag)
@@ -33,14 +37,16 @@ def detail(request, name):
 
 def new(request):
     if request.method == 'POST':
+        #post = request.POST.copy()
+        #post['owner'] = request.user
+        #request.POST = post
         form = NewServerForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('servers/confirm')
+            model = form.save(commit=False)
+            model.owner = request.user
+            model.save()
+            return render(request, 'servers/confirm.html', {'form': form})
     else:
         form = NewServerForm()
 
     return render(request, 'servers/create.html', {'form': form})
-
-
-def confirm(request):
-    return render(request, 'servers/confirm.html')

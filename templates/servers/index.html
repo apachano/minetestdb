@@ -4,8 +4,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
+                <a href="{% url 'servers:new' %}">
+                    <button type="button" class="btn btn-default">Create a new server posting</button>
+                </a><br><br>
                 <form action="." method="post">
             {% csrf_token %}
+                    {% comment %}<div class="form-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Sort By:</div>
+                            <div class="panel-body">
+                                <div class="dropdown">
+                                    <select class="form-control" id="sort" name="sort">
+                                        <option>Oldest</option>
+                                        <option>Newest</option>
+                                        <option>Most Stars</option>
+                                        <option>????</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>{% endcomment %}
                     {% for ftypename, ftype in filters.items %}
                         {%  if ftype %}
                             <div class="form-group">

@@ -26,11 +26,13 @@
                     <div class="row">
                         {% for server in servers %}
                         <div class="col-sm-4">
+                            <div>Server</div>
                             <div><a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a></div>
                         </div>
                         {% endfor %}
                         {% for mod in mods %}
                         <div class="col-sm-4">
+                            <div>Mod</div>
                             <div><a href="{% url 'mods:detail' mod.name %}">{{ mod.name }}</a></div>
                         </div>
                         {% endfor %}
