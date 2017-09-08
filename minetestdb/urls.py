@@ -23,9 +23,15 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
+    # pages
     url(r'^mods', include('mods.urls')),
     url(r'^servers', include('servers.urls')),
     url(r'^users', include('users.urls')),
+    url(r'^subgames', views.comingsoon),
+    url(r'^texturepacks', views.comingsoon),
+    url(r'^skins', views.comingsoon),
+
+    # other stuff
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
 ]

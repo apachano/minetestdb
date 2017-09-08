@@ -37,9 +37,6 @@ def detail(request, name):
 
 def new(request):
     if request.method == 'POST':
-        #post = request.POST.copy()
-        #post['owner'] = request.user
-        #request.POST = post
         form = NewServerForm(request.POST)
         if form.is_valid():
             model = form.save(commit=False)

@@ -2,6 +2,10 @@ from django.contrib.auth import login, authenticate
 from minetestdb.forms import SignUpForm
 from django.shortcuts import render, redirect
 
+def comingsoon(request):
+    context = {}
+    return render(request, 'minetestdb/comingsoon.html', context)
+
 
 def index(request):
     context = {}
