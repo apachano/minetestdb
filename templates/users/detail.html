@@ -8,6 +8,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>{{ duser.username }}</h1></div>
             </div>
+            {% if duser == user %}
+                <a href="{% url 'users:profile' %}">
+                    <button type="button" class="btn btn-default">Edit your profile</button>
+                </a><br><br>
+            {% endif %}
             <div class="panel panel-default">
                 <div class="panel-heading">Biography</div>
                 <div class="panel-body" style="white-space: pre-wrap;">{{ duser.profile.bio }}</div>
