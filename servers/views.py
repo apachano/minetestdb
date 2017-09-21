@@ -47,3 +47,11 @@ def new(request):
         form = NewServerForm()
 
     return render(request, 'servers/create.html', {'form': form})
+
+
+def edit(request, name):
+    server = get_object_or_404(Server, name=name)
+    form = NewServerForm(initial={'name': server.name, 'address': server.address, 'website': server.website,
+                                  'description': server.description, 'mt_version': server.mt_version,
+                                  })
+    return render(request, 'servers/edit.html', {'server': server, 'form': form})
