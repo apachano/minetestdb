@@ -1,2 +1,7 @@
+
+#---  Django ---#
 django
 django-bootstrap3
+
+#---  MySQL  ---#
+mysqlclient
