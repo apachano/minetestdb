@@ -7,3 +7,7 @@
 - Unify all lists pages to pull from one template
 - Add default skin to player profiles
 - Create skins mod that imports skins from website into game
+
+### DEPENDENCIES
+This repository depends on the following system packages...
+* mysqldb
