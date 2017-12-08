@@ -11,7 +11,7 @@ class Tag(models.Model):
 
 class Mod(models.Model):
     name = models.CharField(max_length=200)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, None)
     git = models.URLField(max_length=200, null=True)
     download = models.URLField(max_length=200, null=True)
     mt_version = models.CharField(max_length=10)
