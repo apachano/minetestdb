@@ -1,0 +1,17 @@
+{%  extends "minetestdb/base.html" %}
+
+{% block title %}MTCD New Server{% endblock %}
+
+{%  block content %}
+
+<div class="container">
+    <form action="." method="post">
+
+        {{ form.non_field_errors }}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{%  endblock %}

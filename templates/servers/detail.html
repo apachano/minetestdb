@@ -24,6 +24,11 @@
                 </button>
                 {% endif %}
             </div><br>
+            {% if server.owner == user %}
+                <a href="{% url 'servers:edit' server.name %}">
+                    <button type="button" class="btn btn-default">Edit your posting</button>
+                </a><br><br>
+            {% endif %}
             <div class="panel panel-default">
                 <div class="panel-heading">Address</div>
                 <div class="panel-body">{{ server.address }}</div>
