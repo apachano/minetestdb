@@ -7,26 +7,63 @@ from .forms import NewServerForm
 
 
 def index(request):
-    current_server_list = Server.objects.all()
+    servers = Server.objects.all()
     if request.method == 'POST':
-        post = request.POST
+        post = request.POST.dict()
+        """ #Not fiddle farting with this thing, it broke my code earlier
         # if post.sort == 'Oldest':
         #     current_server_list = Server.objects.order_by('id')
         # if post.sort == 'Newest':
         #     current_server_list = Server.objects.order_by('-id')
         for tag in post:
             if tag != 'csrfmiddlewaretoken':
-                current_server_list = current_server_list.filter(tags=tag)
+                servers = servers.filter(tags=tag)
+        """
     else:
         post = {}
 
-    tags = Tag.objects.all()
-    mt_version = ["0.4.16", "0.5.0"]
-    filters = {'Tags': tags, 'Minetest Version': mt_version}
+    # NOTE:
+    #	The models are essentially a python equivalent of sql tables
+    #	but there's the added ability for you to work with them directly in them
+    #	language
+    #
+    #	So when you're testing things. Instead of making a new structure to debugger
+    #	your code, you just add to the sql database. Which you can do by calling
+    #
+    #	python manage.py shell; # Which will open a python shell. Then...
+    #		from servers.models import Server # imports our database model
+    #		a = Server(name="immagoodname", version="1.2.3", ...) #create a new entry
+    #		a.save() #save the entry in our sql database
+    #
+    #	# exit and restart manage.py shell:
+    #		from servers.models import Servers
+    #		servers = Server.objects.all() # this should now be populated with query objects
+    #		# will return : <QuerySet [<Server: Server object (1)...>]>
+    #
+    #	# If you're having trouble with the data for any reason or need to delete it:
+    #	python manage.py flush
+    #		or "depending on your django version"
+    #	python manage.py reset <APPNAME>
+    #
+    #
+    #	Also, Fuck you m8, I hate using spaces to indent code blocks...
+    #	I mean for crap sakes, the tab button's there for a reason!
+    #	Python works with tabs and spaces, and tab's display can be styled
+    #	per user preference!
+    #
+    # servers = Server.objects.all() #[[[ Just so I remember it's here... ]]]#
+    #
+    print(post)
+    print(post.keys())
 
-    context = {'current_server_list': current_server_list,
-               'filters': filters,
-               'post': post}
+    #	This is just a rebinding of variables in python scope, to template scope.
+    context = {
+        'post': post,							# Raw Post
+        'servers': servers						# Top level
+        #'version': servers[n].version			# we'll access this from template scope
+												# with the "servers" data structure above
+    }
+
     return render(request, 'servers/index.html', context)
 
 

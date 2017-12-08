@@ -26,27 +26,31 @@
                             </div>
                         </div>
                     </div>{% endcomment %}
-                    {% for ftypename, ftype in filters.items %}
-                        {%  if ftype %}
-                            <div class="form-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">{{ ftypename }} </div>
-                                    <div class="panel-body">
-                                        {% for filter in ftype %}
-                                            <div class="checkbox">
-                                                <label><input type="checkbox"
-                                                              name="{{ filter.id }}"
-                                                              {% if filter.id in post.items %}
-                                                                  checked="checked"
-                                                              {% endif %}
-                                                >{{ filter }}</label>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
+                    <div class="form-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Minetest Version </div>
+                            <div class="panel-body">
+                                {% for server in servers %}
+	                                    <div class="checkbox">
+	                                        <label><input type="checkbox"
+	                                                name="{{ server.id }}"
+													{% comment %}
+														Here, I had to filter the value of server.id
+														because it's natively an interger.
+														The django template interpreter doesn't do any
+														type checking so we have to have both values we're
+														comparing be the same type, otherwise they won't
+														be properly compaired and our code misbehave.
+													{% endcomment %}
+													{% if server.id|stringformat:"i" in post.keys%}
+	                                                    checked
+	                                                {% endif %}
+	                                        >{{ server.mt_version }}</label>
+	                                    </div>
+								{% endfor %}
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        </div>
+                    </div>
 
                     <input type="submit" class="btn btn-default" value="Apply Filters">
                 </form>
