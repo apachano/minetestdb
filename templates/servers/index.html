@@ -34,15 +34,15 @@
 	                                    <div class="checkbox">
 	                                        <label><input type="checkbox"
 	                                                name="{{ server.id }}"
-													{% comment %}
-														Here, I had to filter the value of server.id
-														because it's natively an interger.
-														The django template interpreter doesn't do any
-														type checking so we have to have both values we're
-														comparing be the same type, otherwise they won't
-														be properly compaired and our code misbehave.
-													{% endcomment %}
-													{% if server.id|stringformat:"i" in post.keys%}
+		{% comment %}
+			Here, I had to filter the value of server.id
+			because it's natively an interger.
+			The django template interpreter doesn't do any
+			type checking so we have to have both values we're
+			comparing be the same type, otherwise they won't
+			be properly compaired and our code misbehave.
+		{% endcomment %}
+		{% if server.id|stringformat:"i" in post.keys%}
 	                                                    checked
 	                                                {% endif %}
 	                                        >{{ server.mt_version }}</label>
