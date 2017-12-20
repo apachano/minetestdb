@@ -10,6 +10,7 @@ def index(request):
     servers = Server.objects.all()
     if request.method == 'POST':
         post = request.POST.dict()
+	"""
         # if post.sort == 'Oldest':
         #     current_server_list = Server.objects.order_by('id')
         # if post.sort == 'Newest':
@@ -28,7 +29,6 @@ def index(request):
     #
     #	So when you're testing things. Instead of making a new structure to debugger
     #	your code, you just add to the sql database. Which you can do by calling
-    #
     #	python manage.py shell; # Which will open a python shell. Then...
     #		from servers.models import Server # imports our database model
     #		a = Server(name="immagoodname", version="1.2.3", ...) #create a new entry
@@ -44,11 +44,6 @@ def index(request):
     #		or "depending on your django version"
     #	python manage.py reset <APPNAME>
     #
-    #
-    #	Also, Fuck you m8, I hate using spaces to indent code blocks...
-    #	I mean for crap sakes, the tab button's there for a reason!
-    #	Python works with tabs and spaces, and tab's display can be styled
-    #	per user preference!
     #
     # servers = Server.objects.all() #[[[ Just so I remember it's here... ]]]#
     #
