@@ -10,7 +10,6 @@ def index(request):
     servers = Server.objects.all()
     if request.method == 'POST':
         post = request.POST.dict()
-        """ #Not fiddle farting with this thing, it broke my code earlier
         # if post.sort == 'Oldest':
         #     current_server_list = Server.objects.order_by('id')
         # if post.sort == 'Newest':
