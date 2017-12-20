@@ -24,10 +24,10 @@ def index(request):
 
     # NOTE:
     #	The models are essentially a python equivalent of sql tables
-    #	but there's the added ability for you to work with them directly in them
+    #	but there's the added ability for you to work with them directly in the
     #	language
     #
-    #	So when you're testing things. Instead of making a new structure to debugger
+    #	So when you're testing things. Instead of making a new structure to debug
     #	your code, you just add to the sql database. Which you can do by calling
     #	python manage.py shell; # Which will open a python shell. Then...
     #		from servers.models import Server # imports our database model
