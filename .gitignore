@@ -46,10 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
-################################################################################
-# Django 3
-################################################################################
+# =========================
+# Django Files
+# =========================
 
 #Blacklists all pycache compiled binaries and django migrations
 /**/migrations/
