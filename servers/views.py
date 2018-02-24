@@ -1,32 +1,49 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 
-from .models import Server
-from .models import Tag
+from .models import (
+    Server,
+    Tag,
+    Version
+)
 from .forms import NewServerForm
 
 
 def index(request):
-    current_server_list = Server.objects.all()
+    tags = Tag.objects.all()
+    versions = Version.objects.all()
+    servers = Server.objects.all()
+
+    # Here, we sort the post data.
+    # It's alot more efficient to do it here than from within the templates
+    #
     if request.method == 'POST':
-        post = request.POST
+        post = request.POST.dict()
         # if post.sort == 'Oldest':
         #     current_server_list = Server.objects.order_by('id')
         # if post.sort == 'Newest':
         #     current_server_list = Server.objects.order_by('-id')
         for tag in post:
-            if tag != 'csrfmiddlewaretoken':
-                current_server_list = current_server_list.filter(tags=tag)
+            if tag == 'csrfmiddlewaretoken':
+                pass # empty block so my brain doesn't hate me
+            elif tag.find("Tags") == 0:
+                servers = servers.filter(tags=int(tag.lstrip("Tags")))
+            elif tag.find("Minetest Versions") == 0:
+                servers = servers.filter(mt_version=int(tag.lstrip("Minetest Versions")))
     else:
         post = {}
 
-    tags = Tag.objects.all()
-    mt_version = ["0.4.16", "0.5.0"]
-    filters = {'Tags': tags, 'Minetest Version': mt_version}
+    filters = {
+        'Minetest Versions': versions,			# Available Version Filters
+        'Tags': tags 							# Available Filter Tags
+    }
 
-    context = {'current_server_list': current_server_list,
-               'filters': filters,
-               'post': post}
+    # This is just a rebinding of variables in python scope, to template scope.
+    context = {
+        'post': post,							# Raw Post
+        'servers': servers,						# Available Servers
+        'filters': filters						# All Available Filters
+    }
     return render(request, 'servers/index.html', context)
 
 

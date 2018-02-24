@@ -10,36 +10,46 @@
                     <button type="button" class="btn btn-default">Create a new server posting</button>
                 </a><br><br>
                 <form action="." method="post">
-            {% csrf_token %}
-                    {% comment %}<div class="form-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Sort By:</div>
-                            <div class="panel-body">
-                                <div class="dropdown">
-                                    <select class="form-control" id="sort" name="sort">
-                                        <option>Oldest</option>
-                                        <option>Newest</option>
-                                        <option>Most Stars</option>
-                                        <option>????</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>{% endcomment %}
+            	{% csrf_token %}
+                    {% comment %}
+						<div class="form-group">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">Sort By:</div>
+	                            <div class="panel-body">
+	                                <div class="dropdown">
+	                                    <select class="form-control" id="sort" name="sort">
+	                                        <option>Oldest</option>
+	                                        <option>Newest</option>
+	                                        <option>Most Stars</option>
+	                                        <option>????</option>
+	                                    </select>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+					{% endcomment %}
                     {% for ftypename, ftype in filters.items %}
-                        {%  if ftype %}
+                        {% if ftype %}
                             <div class="form-group">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">{{ ftypename }} </div>
                                     <div class="panel-body">
                                         {% for filter in ftype %}
                                             <div class="checkbox">
-                                                <label><input type="checkbox"
-                                                              name="{{ filter.id }}"
-                                                              {% if filter.id in post.items %}
-                                                                  checked="checked"
-                                                              {% endif %}
-                                                >{{ filter }}</label>
+                                                <label>
+													{% with strid=filter.id|stringformat:"i" %}
+														{% with identifier=ftypename|add:strid %}
+															<input
+																type="checkbox"
+		                                                    	name="{{ identifier }}"
+		                                                        {% if identifier in post.keys %}
+		                                                        	checked="checked"
+		                                                        {% endif %}
+		                                                	>
+															{{ filter }}
+														{% endwith %}
+													{% endwith %}
+												</label>
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -47,13 +57,12 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-
                     <input type="submit" class="btn btn-default" value="Apply Filters">
                 </form>
             </div>
             <div class="col-sm-9">
-                {% if current_server_list %}
-                    {% for server in current_server_list %}
+                {% if servers %}
+                    {% for server in servers %}
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -72,9 +81,11 @@
                 {% else %}
                     <p>No servers are available.</p>
                 {% endif %}
-{% comment %}                {% for i, k in post.items %}
-                    {{ i }} and {{ k }} <br>
-                {%  endfor %}{% endcomment %}
+				{% comment %}
+					{% for i, k in post.items %}
+                    	{{ i }} and {{ k }} <br>
+                	{%  endfor %}
+				{% endcomment %}
             </div>
         </div>
     </div>

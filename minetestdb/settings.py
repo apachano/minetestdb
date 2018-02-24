@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CONFIG = os.path.join(BASE_DIR, "config.json")
 
 
 # Quick-start development settings - unsuitable for production
@@ -34,6 +36,7 @@ INSTALLED_APPS = [
     'servers.apps.ServersConfig',
     'mods.apps.ModsConfig',
     'users.apps.UsersConfig',
+	'utilities.apps.UtilitiesConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'minetestdb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "minetestdb/../templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mtcd',
+        'TEST_NAME': 'mtcd_debug',
         'USER': 'site',
         'PASSWORD': 'agfh1085',
         'HOST': 'localhost',
