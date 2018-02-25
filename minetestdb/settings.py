@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'universal.apps.UniversalConfig',
     'servers.apps.ServersConfig',
     'mods.apps.ModsConfig',
     'users.apps.UsersConfig',

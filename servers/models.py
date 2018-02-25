@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from universal.models import Version
 import uuid
 
 # NOTE:
@@ -28,16 +29,6 @@ import uuid
 # FIX FOR ISSUE #4
 
 class Tag(models.Model):
-    #pk = ...
-    #id = ...
-    value = models.CharField(max_length=20)
-    def __str__(self):
-        return self.value
-
-class Version(models.Model):
-    # NOTE:
-    #	don't attempt to combine the tag's
-    #	and versions... it doesn't work...
     #pk = ...
     #id = ...
     value = models.CharField(max_length=20)
