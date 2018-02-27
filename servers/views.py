@@ -59,6 +59,7 @@ def new(request):
             model = form.save(commit=False)
             model.owner = request.user
             model.save()
+            form.save_m2m()
             return render(request, 'servers/confirm.html', {'form': form})
     else:
         form = NewServerForm()
@@ -68,12 +69,21 @@ def new(request):
 
 def edit(request, name):
     server = get_object_or_404(Server, name=name)
-    form = NewServerForm({'name': server.name,
-                          'address': server.address,
-                          'website': server.website,
-                          'description': server.description,
-                          'mt_version': server.mt_version,
-                          'tags': server.tags
-                          })
+    if request.method == 'POST':
+        form = NewServerForm(request.POST)
+        if form.is_valid():
+            model = form.save(commit=False)
+            model.owner = request.user
+            model.save()
+            form.save_m2m()
+            return render(request, 'servers/confirm.html', {'form': form})
+    else:
+        form = NewServerForm({'name': server.name,
+                              'address': server.address,
+                              'website': server.website,
+                              'description': server.description,
+                              'mt_version': server.mt_version,
+                              'tags': server.tags
+                              })
 
     return render(request, 'servers/edit.html', {'server': server, 'form': form})
