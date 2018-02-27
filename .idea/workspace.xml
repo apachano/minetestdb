@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="432bb537-aef2-4548-9e40-ca3cd89d9765" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servers/views.py" afterPath="$PROJECT_DIR$/servers/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/minetestdb/index.html" afterPath="$PROJECT_DIR$/templates/minetestdb/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/servers/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
@@ -40,6 +40,16 @@
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/minetestdb/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="125" lean-forward="false" selection-start-line="10" selection-start-column="125" selection-end-line="10" selection-end-column="125" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,18 +114,6 @@
             <state relative-caret-position="350">
               <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/servers/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -227,7 +225,6 @@
         <option value="$PROJECT_DIR$/templates/mods/detail.html" />
         <option value="$PROJECT_DIR$/templates/users/detail.html" />
         <option value="$PROJECT_DIR$/servers/urls.py" />
-        <option value="$PROJECT_DIR$/templates/minetestdb/index.html" />
         <option value="$PROJECT_DIR$/servers/forms.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/universal/models.py" />
@@ -247,6 +244,7 @@
         <option value="$PROJECT_DIR$/templates/mods/index.html" />
         <option value="$PROJECT_DIR$/mods/views.py" />
         <option value="$PROJECT_DIR$/servers/views.py" />
+        <option value="$PROJECT_DIR$/templates/minetestdb/index.html" />
       </list>
     </option>
   </component>
@@ -323,6 +321,12 @@
               <item name="minetestdb" type="b2602c69:ProjectViewProjectNode" />
               <item name="minetestdb" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="minetestdb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="minetestdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="minetestdb" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="mods" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -380,18 +384,18 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\austin\PycharmProjects\minetestdb\mods" />
+      <recent name="C:\Users\austin\PycharmProjects\minetestdb\templates" />
+      <recent name="C:\Users\austin\PycharmProjects\minetestdb\users" />
+      <recent name="C:\Users\austin\PycharmProjects\minetestdb\templates\users" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\austin\PycharmProjects\minetestdb\minetestdb" />
       <recent name="C:\Users\austin\PycharmProjects\minetestdb" />
       <recent name="C:\Users\austin\PycharmProjects\minetestdb\minetestdb\static\minetestdb" />
       <recent name="C:\Users\austin\PycharmProjects\minetestdb\core" />
       <recent name="C:\Users\austin\PycharmProjects\minetestdb\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\austin\PycharmProjects\minetestdb\mods" />
-      <recent name="C:\Users\austin\PycharmProjects\minetestdb\templates" />
-      <recent name="C:\Users\austin\PycharmProjects\minetestdb\users" />
-      <recent name="C:\Users\austin\PycharmProjects\minetestdb\templates\users" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -696,7 +700,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519722892542</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Spelling Consistency">
+      <created>1519722925307</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1519722925307</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -743,7 +754,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Filters list displays properly" />
     <MESSAGE value="checking in progress on filters" />
     <MESSAGE value="Styling for servers page" />
     <MESSAGE value="mod support" />
@@ -768,7 +778,8 @@
     <MESSAGE value="Repaired tags system for servers" />
     <MESSAGE value="Add mtversions to server listings page" />
     <MESSAGE value="Repair Dynamic MT Version for mods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Repair Dynamic MT Version for mods" />
+    <MESSAGE value="Spelling Consistency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spelling Consistency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -963,14 +974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/minetestdb/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="116" lean-forward="false" selection-start-line="10" selection-start-column="116" selection-end-line="10" selection-end-column="116" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,6 +1212,14 @@
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/minetestdb/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="125" lean-forward="false" selection-start-line="10" selection-start-column="125" selection-end-line="10" selection-end-column="125" />
+          <folding />
         </state>
       </provider>
     </entry>
