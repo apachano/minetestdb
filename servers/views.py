@@ -34,7 +34,7 @@ def index(request):
         post = {}
 
     filters = {
-        'Minetest Versions': versions,			# Available Version Filters
+        'Minetest Version': versions,			# Available Version Filters
         'Tags': tags 							# Available Filter Tags
     }
 
