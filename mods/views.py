@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Mod
 from .models import Tag
+from universal.models import Version
 from .forms import NewModForm
 
 
@@ -16,8 +17,8 @@ def index(request):
         post = {}
 
     tags = Tag.objects.all()
-    mt_version = ["0.4.16", "0.5.0"]
-    filters = {'Tags': tags, 'Minetest Version': mt_version}
+    versions = Version.objects.all()
+    filters = {'Minetest Version': versions, 'Tags': tags}
 
     context = {'current_mod_list': current_mod_list,
                'filters': filters,
