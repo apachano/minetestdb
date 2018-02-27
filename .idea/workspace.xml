@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="432bb537-aef2-4548-9e40-ca3cd89d9765" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servers/views.py" afterPath="$PROJECT_DIR$/servers/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servers/index.html" afterPath="$PROJECT_DIR$/templates/servers/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/servers/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="449">
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/servers/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1950">
-              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="72" column="34" lean-forward="true" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -236,7 +236,6 @@
         <option value="$PROJECT_DIR$/servers/admin.py" />
         <option value="$PROJECT_DIR$/universal/admin.py" />
         <option value="$PROJECT_DIR$/mods/models.py" />
-        <option value="$PROJECT_DIR$/templates/servers/index.html" />
         <option value="$PROJECT_DIR$/minetestdb/views.py" />
         <option value="$PROJECT_DIR$/mods/urls.py" />
         <option value="$PROJECT_DIR$/templates/mods/create.html" />
@@ -247,6 +246,7 @@
         <option value="$PROJECT_DIR$/servers/models.py" />
         <option value="$PROJECT_DIR$/templates/servers/detail.html" />
         <option value="$PROJECT_DIR$/servers/views.py" />
+        <option value="$PROJECT_DIR$/templates/servers/index.html" />
       </list>
     </option>
   </component>
@@ -669,7 +669,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519714040917</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Repaired tags system for servers">
+      <created>1519715094098</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1519715094098</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -716,7 +723,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Sign up" />
     <MESSAGE value="Updated server model to use relations" />
     <MESSAGE value="Updated filter display method" />
     <MESSAGE value="Filters list displays properly" />
@@ -741,7 +747,8 @@
     <MESSAGE value="Fixed User sign up error" />
     <MESSAGE value="Add ability for users to create a new mod" />
     <MESSAGE value="Minor fixes? Trying to fix tags system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes? Trying to fix tags system" />
+    <MESSAGE value="Repaired tags system for servers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repaired tags system for servers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1113,14 +1120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/servers/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/servers/create.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1182,6 +1181,14 @@
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/servers/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="72" column="34" lean-forward="true" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

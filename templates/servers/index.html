@@ -76,6 +76,7 @@
                                     {%  for tag in server.tags.all %}
                                         <span class="label label-default">{{ tag }}</span>
                                     {% endfor %}
+                                <span class="pull-right">MT Version: {{ server.mt_version }}</span>
 
                             </div>
                         </div>
