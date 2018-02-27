@@ -6,6 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'mods:new' %}">
+                        <button type="button" class="btn btn-default">Create a new mod posting</button>
+                    </a><br><br>
+                {%  endif %}
                 <form action="." method="post">
             {% csrf_token %}
                     {% for ftypename, ftype in filters.items %}
