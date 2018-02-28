@@ -6,6 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from servers.models import Server
 from mods.models import Mod
+from users.forms import ChangeContactForm
 
 
 # Lists registered users
@@ -64,4 +65,22 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'users/change_password.html', {
         'form': form
+    })
+
+
+def change_contact(request):
+    if request.method == 'POST':
+        form = ChangeContactForm(request.POST)
+        if form.is_valid():
+            prof = request.user.profile
+            if form.cleaned_data['github']:
+                prof.github = form.cleaned_data['github']
+            prof.save()
+            return redirect('users:change_contact')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = ChangeContactForm()
+    return render(request, 'users/change_contact.html', {
+        'form': form.as_p()
     })
