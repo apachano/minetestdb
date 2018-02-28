@@ -23,6 +23,26 @@
                 <div class="panel-body">{{ duser.profile.location }}</div>
             </div>
             {% endif %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Contact Information</div>
+                <div class="panel-body">
+                    {% if user.profile.github %}
+                        <div><b>GitHub:</b> {{ duser.profile.github }}</div>
+                    {% endif %}
+                    {% if user.profile.irc %}
+                        <div><b>IRC:</b> {{ duser.profile.irc }}</div>
+                    {% endif %}
+                    {% if user.profile.discord %}
+                        <div><b>Discord:</b> {{ duser.profile.discord }}</div>
+                    {% endif %}
+                    {% if user.profile.skype %}
+                        <div><b>Skype:</b> {{ duser.profile.skype }}</div>
+                    {% endif %}
+                    {% if user.profile.ingame %}
+                        <div><b>In Game:</b> { duser.profile.ingame }}</div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
