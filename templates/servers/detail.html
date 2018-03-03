@@ -37,6 +37,10 @@
                 <div class="panel-heading">Server Owner</div>
                 <div class="panel-body"><a href="{% url 'users:detail' server.owner %}">{{ server.owner }}</a></div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Minetest Version</div>
+                <div class="panel-body">{{ server.mt_version }}</div>
+            </div>
             {% if server.website %}
             <div class="panel panel-default">
                 <div class="panel-heading">Website</div>

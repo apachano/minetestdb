@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from universal.models import Version
 import uuid
 
 # NOTE:
@@ -34,25 +35,15 @@ class Tag(models.Model):
     def __str__(self):
         return self.value
 
-class Version(models.Model):
-    # NOTE:
-    #	don't attempt to combine the tag's
-    #	and versions... it doesn't work...
-    #pk = ...
-    #id = ...
-    value = models.CharField(max_length=20)
-    def __str__(self):
-        return self.value
-
 class Server(models.Model):
     #pk = ...
     #id = ...
     unique_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=200)
-    owner = models.ForeignKey(User, None, null=True)
+    owner = models.ForeignKey(User, None)
     address = models.URLField(max_length=200, null=True)
     website = models.URLField(max_length=200, null=True)
     description = models.TextField(null=True)
     votes = models.IntegerField(default=0, null=True)
-    mt_version = models.OneToOneField(Version, None, verbose_name='Minetest Version', default=None)
-    tags = models.ManyToManyField(Tag, verbose_name='Tags')
+    mt_version = models.ForeignKey(Version, None)
+    tags = models.ManyToManyField(Tag, verbose_name='Tags', blank=True)
