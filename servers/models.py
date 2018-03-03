@@ -40,7 +40,7 @@ class Server(models.Model):
     #id = ...
     unique_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=200)
-    owner = models.ForeignKey(User, None)
+    owner = models.ForeignKey(User, None, null=True)
     address = models.URLField(max_length=200, null=True)
     website = models.URLField(max_length=200, null=True)
     description = models.TextField(null=True)
