@@ -31,12 +31,12 @@ class Command(BaseCommand):
 		pass
 
 	def handle(self, *args, **options):
-
+		verbosity = options['verbosity']
 		# for each directory within the repository
 		for root, dirnames, filenames in os.walk(repository):
 			for dirname in dirnames:
 				#find if migrations exist for the folder/app
-				folder = os.path.join(repository, dirname, "migrations\")
+				folder = os.path.join(repository, dirname, "migrations")
 				if os.path.isdir(folder) and os.path.exists(folder):
 					# then delete them all MUAHAHAHAHAHA!!!!
 					shutil.rmtree(folder)
