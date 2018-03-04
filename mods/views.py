@@ -1,9 +1,20 @@
 from django.shortcuts import get_object_or_404, render
+#END CONSTRUCTORS AND LIBS
 
-from .models import Mod
-from .models import Tag
-from universal.models import Version
-from .forms import NewModForm
+# NOTE: Global Imports
+from universal import (
+	# Version # don't need this here because it's inherited through our local .models
+)
+
+# NOTE: Local Imports
+from .models import (
+	Mod,
+	Tag,
+	Version
+)
+from .forms import (
+	NewModForm
+)
 
 
 def index(request):

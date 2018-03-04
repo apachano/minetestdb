@@ -1,7 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-from universal.models import Version
+#END CONSTRUCTORS AND LIBS
 
+
+# NOTE: this file's inherited global models
+from universal.models import (
+	Version
+)
 
 class Tag(models.Model):
     title = models.CharField(max_length=20)

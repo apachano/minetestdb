@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from universal.models import Version
 import uuid
+#END CONSTRUCTORS AND LIBS
+
 
 # NOTE:
 #	Don't forget >>> models.Model.id and models.Model.pk
@@ -27,6 +28,11 @@ import uuid
 # and use that to relate POST data to SQL data and properly display
 # the relation within the templates' output.
 # FIX FOR ISSUE #4
+
+# NOTE: this file's inherited global models
+from universal.models import (
+	Version
+)
 
 class Tag(models.Model):
     #pk = ...
