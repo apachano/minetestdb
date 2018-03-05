@@ -3,9 +3,9 @@ from django.shortcuts import get_object_or_404, render
 #END CONSTRUCTORS AND LIBS
 
 # NOTE: Global Imports
-from universal import (
+#from universal import (
 	#Version (Redundant)
-)
+#)
 
 # NOTE: Local Imports
 from .models import (

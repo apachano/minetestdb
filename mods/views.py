@@ -2,9 +2,10 @@ from django.shortcuts import get_object_or_404, render
 #END CONSTRUCTORS AND LIBS
 
 # NOTE: Global Imports
-from universal import (
+#from universal import (
 	# Version # don't need this here because it's inherited through our local .models
-)
+
+#)
 
 # NOTE: Local Imports
 from .models import (
