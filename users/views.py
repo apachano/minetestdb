@@ -75,6 +75,14 @@ def change_contact(request):
             prof = request.user.profile
             if form.cleaned_data['github']:
                 prof.github = form.cleaned_data['github']
+            if form.cleaned_data['irc']:
+                prof.github = form.cleaned_data['irc']
+            if form.cleaned_data['discord']:
+                prof.github = form.cleaned_data['discord']
+            if form.cleaned_data['skype']:
+                prof.github = form.cleaned_data['skype']
+            if form.cleaned_data['ingame']:
+                prof.github = form.cleaned_data['ingame']
             prof.save()
             return redirect('users:change_contact')
         else:
