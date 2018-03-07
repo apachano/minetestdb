@@ -1,8 +1,12 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
 from servers.models import Server
 from mods.models import Mod
+from users.forms import ChangeContactForm
 
 
 # Lists registered users
@@ -46,3 +50,45 @@ def login_view(request):
     else:
         redirect("/")
 
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('users:change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'users/change_password.html', {
+        'form': form
+    })
+
+
+def change_contact(request):
+    if request.method == 'POST':
+        form = ChangeContactForm(request.POST)
+        if form.is_valid():
+            prof = request.user.profile
+            if form.cleaned_data['github']:
+                prof.github = form.cleaned_data['github']
+            if form.cleaned_data['irc']:
+                prof.github = form.cleaned_data['irc']
+            if form.cleaned_data['discord']:
+                prof.github = form.cleaned_data['discord']
+            if form.cleaned_data['skype']:
+                prof.github = form.cleaned_data['skype']
+            if form.cleaned_data['ingame']:
+                prof.github = form.cleaned_data['ingame']
+            prof.save()
+            return redirect('users:change_contact')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = ChangeContactForm()
+    return render(request, 'users/change_contact.html', {
+        'form': form.as_p()
+    })

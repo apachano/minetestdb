@@ -2,8 +2,31 @@
 
 {%  block content %}
 
-<div class="container">
-    <h1>{{ user }}</h1>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="container">
+                    <h1>{{ user }}</h1>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:change_password' %}">Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:change_contact' %}">Change Contact Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                {% block profile %}Something didn't load . . . Try reloading . . . {% endblock %}
+            </div>
+        </div>
+    </div>
 
 {%  endblock %}

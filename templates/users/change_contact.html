@@ -1,0 +1,24 @@
+{%  extends "users/profile.html" %}
+
+{%  block profile %}
+
+    <div class="container">
+        <h2>Change Contact Information</h2>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="container">
+        <form method="post">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit">Save changes</button>
+        </form>
+    </div>
+
+{%  endblock %}

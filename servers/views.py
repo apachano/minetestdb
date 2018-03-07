@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+<<<<<<< HEAD
 #END CONSTRUCTORS AND LIBS
 
 # NOTE: Global Imports
@@ -8,6 +9,8 @@ from django.shortcuts import get_object_or_404, render
 )
 
 # NOTE: Local Imports
+=======
+>>>>>>> 9e542372bc0098ac58a215f3f1a7718ece724d6e
 from .models import (
     Server,
     Tag,
