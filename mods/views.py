@@ -19,23 +19,36 @@ from .forms import (
 
 
 def index(request):
-    current_mod_list = Mod.objects.all()
+	mods = Mod.objects.all()
+	tags = Tag.objects.all()
+	versions = Version.objects.all()
+
+	# Here, we sort the post data.
+    # It's alot more efficient to do it here than from within the templates
+    #
     if request.method == 'POST':
-        post = request.POST
+        post = request.POST.dict()
         for tag in post:
-            if tag != 'csrfmiddlewaretoken':
-                current_mod_list = current_mod_list.filter(tags=tag)
-    else:
-        post = {}
+            if tag == 'csrfmiddlewaretoken':
+                pass # empty block so my brain doesn't hate me
+            elif tag.find("Tags") == 0:
+                servers = servers.filter(tags=int(tag.lstrip("Tags")))
+            elif tag.find("Minetest Versions") == 0:
+                servers = servers.filter(mt_version=int(tag.lstrip("Minetest Versions")))
 
-    tags = Tag.objects.all()
-    versions = Version.objects.all()
-    filters = {'Minetest Version': versions, 'Tags': tags}
 
-    context = {'current_mod_list': current_mod_list,
-               'filters': filters,
-               'post': post}
-    return render(request, 'mods/index.html', context)
+	filters = {
+		'Minetest Version': versions,			# Available Version Filters
+		'Tags': tags 							# Available Filter Tags
+	}
+
+	# This is just a rebinding of variables in python scope, to template scope.
+	context = {
+		'post': post,							# Raw Post
+		'mods': mods,							# Available Servers
+		'filters': filters						# All Available Filters
+	}
+	return render(request, 'mods/index.html', context)
 
 
 def detail(request, name):

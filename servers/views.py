@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render
 # NOTE: Global Imports
 #from universal import (
 	#Version (Redundant)
-#)
+)
 
 # NOTE: Local Imports
 from .models import (
