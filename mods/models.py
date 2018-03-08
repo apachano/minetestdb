@@ -5,10 +5,13 @@ from django.contrib.auth.models import User
 
 # NOTE: this file's inherited global models
 from universal.models import (
-	Version
+    Version
 )
 
 class Tag(models.Model):
+    objattr = "tags"
+    #pk = ...
+    #id = ...
     title = models.CharField(max_length=20)
 
     def __str__(self):
@@ -16,6 +19,7 @@ class Tag(models.Model):
 
 
 class Mod(models.Model):
+    objattr = "mods"
     name = models.CharField(max_length=200)
     author = models.ForeignKey(User, None)
     git = models.URLField(max_length=200, null=True)

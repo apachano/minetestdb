@@ -2,53 +2,49 @@ from django.shortcuts import get_object_or_404, render
 #END CONSTRUCTORS AND LIBS
 
 # NOTE: Global Imports
-#from universal import (
-	# Version # don't need this here because it's inherited through our local .models
-
-#)
+from universal import (
+    # Version # don't need this here because it's inherited through our local .models
+    dynamic_sort
+)
 
 # NOTE: Local Imports
 from .models import (
-	Mod,
-	Tag,
-	Version
+    Mod,
+    Tag,
+    Version
 )
 from .forms import (
-	NewModForm
+    NewModForm
 )
 
 
 def index(request):
-	mods = Mod.objects.all()
-	tags = Tag.objects.all()
-	versions = Version.objects.all()
+    mods = Mod.objects.all()
+    tags = Tag.objects.all()
+    versions = Version.objects.all()
 
-	# Here, we sort the post data.
+    # Here, we sort the post data.
     # It's alot more efficient to do it here than from within the templates
     #
     if request.method == 'POST':
         post = request.POST.dict()
-        for tag in post:
-            if tag == 'csrfmiddlewaretoken':
-                pass # empty block so my brain doesn't hate me
-            elif tag.find("Tags") == 0:
-                servers = servers.filter(tags=int(tag.lstrip("Tags")))
-            elif tag.find("Minetest Versions") == 0:
-                servers = servers.filter(mt_version=int(tag.lstrip("Minetest Versions")))
+        sorted_mods = dynamic_sort(post, mods, [Tag, Version])
+    else:
+        post = {}
 
 
-	filters = {
-		'Minetest Version': versions,			# Available Version Filters
-		'Tags': tags 							# Available Filter Tags
-	}
+    filters = {
+        'Minetest Version': versions,			# Available Version Filters
+        'Tags': tags 							# Available Filter Tags
+    }
 
-	# This is just a rebinding of variables in python scope, to template scope.
-	context = {
-		'post': post,							# Raw Post
-		'mods': mods,							# Available Servers
-		'filters': filters						# All Available Filters
-	}
-	return render(request, 'mods/index.html', context)
+    # This is just a rebinding of variables in python scope, to template scope.
+    context = {
+        'post': post,							# Raw Post
+        'mods': sorted_mods,					# Available Mods
+        'filters': filters						# All Available Filters
+    }
+    return render(request, 'mods/index.html', context)
 
 
 def detail(request, name):

@@ -5,13 +5,13 @@
         <div class="row">
                 {% if user_list %}
                     {% for user in user_list %}
-                      <div class="col-sm-3">
+                    <div class="col-sm-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <a href="{% url 'users:detail' user.username %}">{{ user.username }}</a>
                             </div>
                         </div>
-                      </div>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>No users are available.</p>
