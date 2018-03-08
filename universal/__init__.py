@@ -20,12 +20,14 @@ def dynamic_sort(post, objects, fields):
 	for flag in post:
 		if flag == 'csrfmiddlewaretoken':
 			pass # empty block so my brain doesn't hate me (skip for now)
-		elif ("Tags" in fields) and tag.find("Tags") == 0:
+		elif ("Tags" in fields) and flag.find("Tags") == 0:
 			objects = objects.filter(tags=int(flag.lstrip("Tags")))
-		elif ("Minetest Versions" in fields) and tag.find("Minetest Versions") == 0:
+		elif ("Minetest Versions" in fields) and flag.find("Minetest Versions") == 0:
 			objects = objects.filter(mt_version=int(flag.lstrip("Minetest Versions")))
 
 		# IDEA:
-		#	Perhaps, for our explicit sort options, we could add a radio button
-		#	that would act as the single flag for our range of explicit sort
+		#	Perhaps, for our explicit sort options, we could add a radio
+		#	button that would act as the single flag for our range of
+		#	explicit sort options.
 		#
+	return objects
