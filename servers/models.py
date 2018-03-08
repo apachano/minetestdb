@@ -31,10 +31,11 @@ import uuid
 
 # NOTE: this file's inherited global models
 from universal.models import (
-	Version
+    Version
 )
 
 class Tag(models.Model):
+    objattr = "tags"
     #pk = ...
     #id = ...
     value = models.CharField(max_length=20)
@@ -51,5 +52,5 @@ class Server(models.Model):
     website = models.URLField(max_length=200, null=True)
     description = models.TextField(null=True)
     votes = models.IntegerField(default=0, null=True)
-    mt_version = models.ForeignKey(Version, None)
+    mt_version = models.ForeignKey(Version, None, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tags', blank=True)
