@@ -38,14 +38,14 @@ def dynamic_sort(post, objects, fields):
 			#
 			#	Ok, ok... so after an hour of thinking I ended up adding an
 			#	objattr attribute to all inherited models to deal with this issue
-			if flag.find(field.objattr) == 0:
+			if flag.find(str(field.objattr)) == 0:
 				# The issue starts here, at object sorting.
 				objects = objects.filter(**{
 					# the objects.filter method takes said models attributes as
 					# keyword arguments and parses them through python's
 					# keyword syntax, which means the only way to assign them
 					# is to use pythons keyword syntax.
-					field.objattr:int(flag.lstrip(field.objattr))
+					str(field.objattr):int(flag.lstrip(str(field.objattr)))
 					# I managed to find a way to assign keyword names via
 					# dictionary syntax, however, I still can't figure out
 					# an efficient means of getting the assigned

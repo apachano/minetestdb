@@ -28,7 +28,7 @@ def index(request):
     #
     if request.method == 'POST':
         post = request.POST.dict()
-        sorted_mods = dynamic_sort(post, mods, [Tag, Version])
+        mods = dynamic_sort(post, mods, [Tag, Version])
     else:
         post = {}
 
@@ -41,7 +41,7 @@ def index(request):
     # This is just a rebinding of variables in python scope, to template scope.
     context = {
         'post': post,							# Raw Post
-        'mods': sorted_mods,					# Available Mods
+        'mods': mods,							# Available Mods
         'filters': filters						# All Available Filters
     }
     return render(request, 'mods/index.html', context)

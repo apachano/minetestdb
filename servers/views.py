@@ -29,7 +29,7 @@ def index(request):
     #
     if request.method == 'POST':
         post = request.POST.dict()
-        sorted_servers = dynamic_sort(post, servers, [Tag, Version])
+        servers = dynamic_sort(post, servers, [Tag, Version])
     else:
         post = {}
 
@@ -41,7 +41,7 @@ def index(request):
     # This is just a rebinding of variables in python scope, to template scope.
     context = {
         'post': post,							# Raw Post
-        'servers': sorted_servers,				# Available Servers
+        'servers': servers,				# Available Servers
         'filters': filters						# All Available Filters
     }
     return render(request, 'servers/index.html', context)

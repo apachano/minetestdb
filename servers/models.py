@@ -35,7 +35,7 @@ from universal.models import (
 )
 
 class Tag(models.Model):
-    objattr = "tags"
+    objattr = models.CharField(max_length=4, default="tags")
     #pk = ...
     #id = ...
     value = models.CharField(max_length=20)

@@ -9,7 +9,7 @@ from universal.models import (
 )
 
 class Tag(models.Model):
-    objattr = "tags"
+    objattr = models.CharField(max_length=4, default="tags") #NOTE DO NOT EDIT
     #pk = ...
     #id = ...
     title = models.CharField(max_length=20)
@@ -19,7 +19,7 @@ class Tag(models.Model):
 
 
 class Mod(models.Model):
-    objattr = "mods"
+    objattr = models.CharField(max_length=4, default="mods") #NOTE DO NOT EDIT
     name = models.CharField(max_length=200)
     author = models.ForeignKey(User, None)
     git = models.URLField(max_length=200, null=True)
