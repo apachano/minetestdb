@@ -67,7 +67,7 @@
                     {% for server in servers %}
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a>
+                                <a href="{% url 'servers:detail' server.name|escape %}">{{ server.name }}</a>
                                 <span class="pull-right">{{ server.address }}</span>
                             </div>
                             <div class="panel-body">
