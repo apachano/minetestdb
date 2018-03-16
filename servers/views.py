@@ -1,11 +1,22 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+#END CONSTRUCTORS AND LIBS
+
+# NOTE: Global Imports
+from universal import (
+    #Version (Redundant)
+    dynamic_sort
+)
+
+# NOTE: Local Imports
 from .models import (
     Server,
     Tag,
     Version
 )
-from .forms import NewServerForm
+from .forms import (
+    NewServerForm
+)
 
 
 def index(request):
@@ -18,17 +29,7 @@ def index(request):
     #
     if request.method == 'POST':
         post = request.POST.dict()
-        # if post.sort == 'Oldest':
-        #     current_server_list = Server.objects.order_by('id')
-        # if post.sort == 'Newest':
-        #     current_server_list = Server.objects.order_by('-id')
-        for tag in post:
-            if tag == 'csrfmiddlewaretoken':
-                pass # empty block so my brain doesn't hate me
-            elif tag.find("Tags") == 0:
-                servers = servers.filter(tags=int(tag.lstrip("Tags")))
-            elif tag.find("Minetest Versions") == 0:
-                servers = servers.filter(mt_version=int(tag.lstrip("Minetest Versions")))
+        servers = dynamic_sort(post, servers, [Tag, Version])
     else:
         post = {}
 
@@ -40,7 +41,7 @@ def index(request):
     # This is just a rebinding of variables in python scope, to template scope.
     context = {
         'post': post,							# Raw Post
-        'servers': servers,						# Available Servers
+        'servers': servers,				# Available Servers
         'filters': filters						# All Available Filters
     }
     return render(request, 'servers/index.html', context)

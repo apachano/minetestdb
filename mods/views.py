@@ -1,28 +1,49 @@
 from django.shortcuts import get_object_or_404, render
+#END CONSTRUCTORS AND LIBS
 
-from .models import Mod
-from .models import Tag
-from universal.models import Version
-from .forms import NewModForm
+# NOTE: Global Imports
+from universal import (
+    # Version # don't need this here because it's inherited through our local .models
+    dynamic_sort
+)
+
+# NOTE: Local Imports
+from .models import (
+    Mod,
+    Tag,
+    Version
+)
+from .forms import (
+    NewModForm
+)
 
 
 def index(request):
-    current_mod_list = Mod.objects.all()
+    mods = Mod.objects.all()
+    tags = Tag.objects.all()
+    versions = Version.objects.all()
+
+    # Here, we sort the post data.
+    # It's alot more efficient to do it here than from within the templates
+    #
     if request.method == 'POST':
-        post = request.POST
-        for tag in post:
-            if tag != 'csrfmiddlewaretoken':
-                current_mod_list = current_mod_list.filter(tags=tag)
+        post = request.POST.dict()
+        mods = dynamic_sort(post, mods, [Tag, Version])
     else:
         post = {}
 
-    tags = Tag.objects.all()
-    versions = Version.objects.all()
-    filters = {'Minetest Version': versions, 'Tags': tags}
 
-    context = {'current_mod_list': current_mod_list,
-               'filters': filters,
-               'post': post}
+    filters = {
+        'Minetest Version': versions,			# Available Version Filters
+        'Tags': tags 							# Available Filter Tags
+    }
+
+    # This is just a rebinding of variables in python scope, to template scope.
+    context = {
+        'post': post,							# Raw Post
+        'mods': mods,							# Available Mods
+        'filters': filters						# All Available Filters
+    }
     return render(request, 'mods/index.html', context)
 
 

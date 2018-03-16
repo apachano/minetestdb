@@ -1,9 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-from universal.models import Version
+#END CONSTRUCTORS AND LIBS
 
+
+# NOTE: this file's inherited global models
+from universal.models import (
+    Version
+)
 
 class Tag(models.Model):
+    objattr = models.CharField(max_length=4, default="tags") #NOTE DO NOT EDIT
+    #pk = ...
+    #id = ...
     title = models.CharField(max_length=20)
 
     def __str__(self):
@@ -11,6 +19,7 @@ class Tag(models.Model):
 
 
 class Mod(models.Model):
+    objattr = models.CharField(max_length=4, default="mods") #NOTE DO NOT EDIT
     name = models.CharField(max_length=200)
     author = models.ForeignKey(User, None)
     git = models.URLField(max_length=200, null=True)
