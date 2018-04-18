@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'servers.apps.ServersConfig',
     'mods.apps.ModsConfig',
     'users.apps.UsersConfig',
-	'utilities.apps.UtilitiesConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',

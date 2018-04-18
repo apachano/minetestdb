@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from universal.models import Version
 import uuid
+#END CONSTRUCTORS AND LIBS
+
 
 # NOTE:
 #	Don't forget >>> models.Model.id and models.Model.pk
@@ -28,7 +29,13 @@ import uuid
 # the relation within the templates' output.
 # FIX FOR ISSUE #4
 
+# NOTE: this file's inherited global models
+from universal.models import (
+    Version
+)
+
 class Tag(models.Model):
+    objattr = models.CharField(max_length=4, default="tags")
     #pk = ...
     #id = ...
     value = models.CharField(max_length=20)
@@ -45,5 +52,5 @@ class Server(models.Model):
     website = models.URLField(max_length=200, null=True)
     description = models.TextField(null=True)
     votes = models.IntegerField(default=0, null=True)
-    mt_version = models.ForeignKey(Version, None)
+    mt_version = models.ForeignKey(Version, None, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tags', blank=True)

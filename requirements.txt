@@ -5,3 +5,7 @@ django-bootstrap3
 
 #---  MySQL  ---#
 mysqlclient
+
+#--- Optional---#
+#lorem 			# Needed for `manage.py spawn` helper
+				# @ https://github.com/sfischer13/python-lorem

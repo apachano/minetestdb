@@ -12,24 +12,24 @@
                     </a><br><br>
                 {%  endif %}
                 <form action="." method="post">
-            	{% csrf_token %}
+                {% csrf_token %}
                     {% comment %}
-						<div class="form-group">
-	                        <div class="panel panel-default">
-	                            <div class="panel-heading">Sort By:</div>
-	                            <div class="panel-body">
-	                                <div class="dropdown">
-	                                    <select class="form-control" id="sort" name="sort">
-	                                        <option>Oldest</option>
-	                                        <option>Newest</option>
-	                                        <option>Most Stars</option>
-	                                        <option>????</option>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-					{% endcomment %}
+                        <div class="form-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Sort By:</div>
+                                <div class="panel-body">
+                                    <div class="dropdown">
+                                        <select class="form-control" id="sort" name="sort">
+                                            <option>Oldest</option>
+                                            <option>Newest</option>
+                                            <option>Most Stars</option>
+                                            <option>????</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endcomment %}
                     {% for ftypename, ftype in filters.items %}
                         {% if ftype %}
                             <div class="form-group">
@@ -39,19 +39,19 @@
                                         {% for filter in ftype %}
                                             <div class="checkbox">
                                                 <label>
-													{% with strid=filter.id|stringformat:"i" %}
-														{% with identifier=ftypename|add:strid %}
-															<input
-																type="checkbox"
-		                                                    	name="{{ identifier }}"
-		                                                        {% if identifier in post.keys %}
-		                                                        	checked="checked"
-		                                                        {% endif %}
-		                                                	>
-															{{ filter }}
-														{% endwith %}
-													{% endwith %}
-												</label>
+                                                    {% with strid=filter.id|stringformat:"i" %}
+                                                        {% with identifier=ftype.objattr|add:strid %}
+                                                            <input
+                                                                type="checkbox"
+                                                                name="{{ identifier }}"
+                                                                {% if identifier in post.keys %}
+                                                                    checked="checked"
+                                                                {% endif %}
+                                                            >
+                                                            {{ filter }}
+                                                        {% endwith %}
+                                                    {% endwith %}
+                                                </label>
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -65,10 +65,9 @@
             <div class="col-sm-9">
                 {% if servers %}
                     {% for server in servers %}
-
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <a href="{% url 'servers:detail' server.name %}">{{ server.name }}</a>
+                                <a href="{% url 'servers:detail' server.name|escape %}">{{ server.name }}</a>
                                 <span class="pull-right">{{ server.address }}</span>
                             </div>
                             <div class="panel-body">
@@ -77,18 +76,17 @@
                                         <span class="label label-default">{{ tag }}</span>
                                     {% endfor %}
                                 <span class="pull-right">MT Version: {{ server.mt_version }}</span>
-
                             </div>
                         </div>
                     {% endfor %}
                 {% else %}
                     <p>No servers are available.</p>
                 {% endif %}
-				{% comment %}
-					{% for i, k in post.items %}
-                    	{{ i }} and {{ k }} <br>
-                	{%  endfor %}
-				{% endcomment %}
+                {% comment %}
+                    {% for i, k in post.items %}
+                        {{ i }} and {{ k }} <br>
+                    {%  endfor %}
+                {% endcomment %}
             </div>
         </div>
     </div>
